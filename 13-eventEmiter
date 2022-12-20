@@ -1,0 +1,30 @@
+const EventEmitter = require('events')
+
+const customEvent = new EventEmitter()
+
+customEvent.on('responce1', () => {
+    console.log('pavan 1');
+})
+customEvent.on('responce1', () => {
+    console.log('pavan 1 can add maney on methods , order matters');
+})
+customEvent.on('responce2', (parameter1,paramter2) => {
+    console.log('pavan 2' + parameter1 + paramter2);
+})
+
+customEvent.emit('responce2', 'example','example2')
+customEvent.emit('responce1')
+
+
+
+const http = require('http')
+
+const server = http.createServer()
+
+// no need of call back function
+// can use on method of events
+// subscribe to it
+server.on('request',(req,res)=>{
+    res.end("welcome to node")
+})
+server.listen('4000')
